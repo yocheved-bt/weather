@@ -1,0 +1,10 @@
+<qk-dropdown [title] ="'City Name'" 
+             [list] ="dataService.cityList"
+             (change)="valueChange($event)">
+</qk-dropdown>
+
+<qk-dropdown [title] ="'Temperature units'"
+             [list] ="dataService.tempUnitsList"
+             (change)="valueChange($event)">
+</qk-dropdown> 
+
