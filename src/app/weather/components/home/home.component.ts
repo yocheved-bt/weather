@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/weather/services/data.service'
 
 @Component({
   selector: 'qk-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(dataService: DataService) { 
+    
+  }
 
   ngOnInit(): void {
   }

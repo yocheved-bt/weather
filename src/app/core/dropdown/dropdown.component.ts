@@ -9,32 +9,24 @@ import { DDList } from '../../types'
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() list: DDList ;
+  @Input() list: DDList[];
+  @Input() defualtValue: any;
   @Input() title: string;
-  @Output() change: EventEmitter<DDList> = new EventEmitter<DDList>();
+  @Input() type: string;
 
-  selectedValue: DDList;
+  @Output() change: EventEmitter<any> = new EventEmitter<any>();
 
-  //constructor() { }
-
+setDefualtVal(){
+  var index = this.list.map(function(x) {return x.id; }).indexOf(this.defualtValue.id);
+  this.defualtValue = this.list[index];
+}
   ngOnInit(): void {
-    this.selectedValue = this.list[0];
+    this.setDefualtVal();
 
   }
 
-  
- // form = new FormGroup({
-   // dropdown: new FormControl('', Validators.required)
-  //});
-  
- // get f(){
-   // return this.form.controls;
-  //}
-  onChange(event: DDList){
-   // console.log("---------->>>>",event);
-    this.change.emit(event);
-
+  onChange(event: DDList,name?:string){
+    this.change.emit({'event':event,"name": this.type});
 }
-  
  
 }

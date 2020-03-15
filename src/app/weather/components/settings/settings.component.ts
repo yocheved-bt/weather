@@ -1,27 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from "rxjs";
 
 import { DataService } from '../../services/data.service';
-import { DDList } from 'src/app/types';
+import { DDList, Weather, Settings } from 'src/app/types';
+
 
 @Component({
   selector: 'qk-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
 
-   dataService;
-   temp
+  dataService;
+  subscription: Subscription;
+  isChange: boolean;
+  tempData: Settings
 
-  constructor( dataService: DataService) { 
+  constructor(private router: Router, dataService: DataService) {
     this.dataService = dataService;
   }
-  valueChange(value: DDList): void {
-    this.temp = value;
-    console.log("settings componets", this.temp)
+  valueChange(val): void {
+    this.isChange = true;
+    this.tempData[val.name] = val.event;
+  }
+
+  update() {
+    if (this.isChange) { // data changed
+      this.dataService.settData = this.tempData;
+      this.subscription = this.dataService.getDetails().subscribe(
+        (data: Weather) => {
+          console.log('@@@@@@@@@@@@@@@@@ data @@@@@', data);
+          this.navigate();
+
+        }
+      );
+    }
+    else { // data not changed
+      this.navigate();
+    }
+
+  }
+  navigate(){
+    this.router.navigate(['./home/']);
   }
 
   ngOnInit(): void {
+    this.isChange = false;
+    this.tempData = this.dataService.settData;
   }
+
+  ngOnDestroy() {
+    if(this.isChange){
+    this.subscription.unsubscribe();
+  }
+}
 
 }

@@ -9,7 +9,7 @@
                 <option disabled>Select {{title}}</option>
                 <option [value]="item" *ngFor="let item of list">{{item.name}}</option>
             </select> -->
-            <select class="" (ngModelChange)="onChange($event)" [(ngModel)]="selectedValue">
+            <select class="" (ngModelChange)="onChange($event)" [(ngModel)]="defualtValue">
                 <option disabled selected>Select a {{title}}</option>
                 <option
                   *ngFor="let item of list"

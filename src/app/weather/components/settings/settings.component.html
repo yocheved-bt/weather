@@ -1,10 +1,16 @@
-<qk-dropdown [title] ="'City Name'" 
+<qk-dropdown [title] ="'Citis'"
              [list] ="dataService.cityList"
+             [type] = "'city'"
+             [defualtValue] ="tempData.city"
              (change)="valueChange($event)">
 </qk-dropdown>
 
 <qk-dropdown [title] ="'Temperature units'"
              [list] ="dataService.tempUnitsList"
+             [type] = "'tempUnit'"
+             [defualtValue] ="tempData.tempUnit"
              (change)="valueChange($event)">
-</qk-dropdown> 
+</qk-dropdown>
+
+<button (click)= "update()">update</button>
 
