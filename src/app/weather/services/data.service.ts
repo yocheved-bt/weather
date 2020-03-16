@@ -6,10 +6,10 @@ import { DDList , Weather, Settings } from '../../types'
 import { Observable, Subscription } from 'rxjs';
 
 //TODO: change injectable
- @Injectable({
-  providedIn: 'root'
- })
- 
+//  @Injectable({
+//   providedIn: 'root'
+//  })
+ @Injectable()
 export class DataService {
 
   readonly cityList: DDList[] = [{id:'293397' ,name:'Tel-Aviv'},{id:'281184' ,name:'Jerusalem'},{id:'293703' ,name:'Rishon Leziyyon'}];

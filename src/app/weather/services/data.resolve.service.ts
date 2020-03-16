@@ -4,11 +4,12 @@ import { take, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { DataService } from './data.service';
+import { Weather } from 'src/app/types';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataResolverService implements Resolve <Observable<any>>{
+export class DataResolverService implements Resolve <Observable<Weather>>{
 
   constructor(private ds: DataService) { }
 

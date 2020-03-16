@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { DataService } from '../../services/data.service';
-import { DDList, Weather, Settings } from 'src/app/types';
+import { Weather, Settings } from 'src/app/types';
 
 
 @Component({
@@ -34,18 +34,15 @@ export class SettingsComponent implements OnInit, OnDestroy {
         (data: Weather) => {
           this.dataService.data = data;
           this.navigate();
-        }
-      );
+        });
     }
-    else { // data not changed
+    else { 
       this.navigate();
     }
-
   }
-  navigate(){
-    
-    this.router.navigate(['/home']);
 
+  navigate(){
+    this.router.navigate(['/home']);
   }
 
   ngOnInit(): void {
@@ -58,5 +55,4 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 }
-
 }

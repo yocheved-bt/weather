@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.data = this.route.snapshot.data.userdata; // get data from resolver
+    this.route.data.subscribe(data => {
+      this.data = data.usedata;//this.route.snapshot.data.userdata; // get data from resolver
+    });
     this.detail = this.data.weather[0];
     this.src=`https://openweathermap.org/img/w/${this.detail.icon}.png`
     this.UnitTemp();

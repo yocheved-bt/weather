@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
 import { DataService } from './services/data.service';
+import { DataResolverService } from './services/data.resolve.service';
+
 
 
 
@@ -19,6 +21,7 @@ import { DataService } from './services/data.service';
     CoreModule
   ], 
   exports: [ContainerComponent],
-  providers:[DataService]
+  providers:[DataService, DataResolverService]
+
 })
 export class WeatherModule { }
