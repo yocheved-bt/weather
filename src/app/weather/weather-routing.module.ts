@@ -19,11 +19,6 @@ const routes: Routes = [
         component: SettingsComponent,
         data: { title: 'Settings', hide: true  }
       },
-      {
-        path: 'pppp',
-        component: HeaderComponent,
-        data: { title: 'Settings', hide: true  }
-      },
     { path: '',
       redirectTo: '/home',
       pathMatch: 'full'
@@ -35,4 +30,3 @@ const routes: Routes = [
     exports: [RouterModule],
   })
   export class WeatherRoutingModule { }
-  

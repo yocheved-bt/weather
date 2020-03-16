@@ -8,8 +8,9 @@ import { DDList } from '../../types'
              <option disabled selected>Select a {{title}}</option>
              <option *ngFor="let item of list" [ngValue]="item">  {{item.name}} </option>
              </select>`,
-  styleUrls: ['./dropdown.component.css']
-})
+  styles: [``]
+            })
+
 export class DropdownComponent implements OnInit {
 
   @Input() list: DDList[];
@@ -25,7 +26,6 @@ setDefualtVal(){
 }
   ngOnInit(): void {
     this.setDefualtVal();
-
   }
 
   onChange(event: DDList,name?:string){
