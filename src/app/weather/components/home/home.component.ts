@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/weather/services/data.service'
+import { Weather } from 'src/app/types';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'qk-home',
@@ -8,11 +10,16 @@ import { DataService } from 'src/app/weather/services/data.service'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(dataService: DataService) { 
-    
-  }
+  data: Weather; 
+  src: string;
+  detail : any;
+
+  constructor(dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.data = this.route.snapshot.data.userdata; // get data from resolver
+    this.detail = this.data.weather[0];
+    this.src=`https://openweathermap.org/img/w/${this.detail.icon}.png`
   }
 
 }

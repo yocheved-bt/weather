@@ -34,7 +34,7 @@ export interface Coord {
 }
 
 export interface Main {
-  temp:       number;
+  temp:       string;
   feels_like: number;
   temp_min:   number;
   temp_max:   number;

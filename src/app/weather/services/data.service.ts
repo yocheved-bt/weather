@@ -16,6 +16,7 @@ export class DataService {
   readonly tempUnitsList: DDList[] = [{id:'metric',name:'Celsius'},{id:'Imperial',name:'Fahrenheit'}];
 
   settData: Settings; 
+  data:Weather;
 
   constructor(private http: HttpClient) { 
   }
@@ -36,30 +37,27 @@ export class DataService {
     subscription = this.getDetails().subscribe(
       (data: Weather) => {
         console.log('@@@@@@@@@@@@@@@@@ data in init func @@@@@', data);
+        this.data = data;
         subscription.unsubscribe();
 
       }
     );
   }
  
-  //TODO: change type any in setval
   getDetails(): Observable <Weather> {
 
-    let url = `/api/data/2.5/weather?id=${this.settData.city.id}&units=${this.settData.tempUnit.id}
-              &appId=4d123267c556a96c4b25845875c2199b`;
+    let url = `/api/data/2.5/weather?id=${this.settData.city.id}&units=${this.settData.tempUnit.id}&appId=4d123267c556a96c4b25845875c2199b`;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8')
-                     .set('Access-Control-Allow-Origin','*')
-                     .set('Access-Control-Allow-Methods','DELETE, POST, GET, OPTIONS')
-                     .set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
-                     ;
+                    //  .set('Access-Control-Allow-Origin','*')
+                    //  .set('Access-Control-Allow-Methods','DELETE, POST, GET, OPTIONS')
+                    //  .set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
 
    return this.http.get<Weather>(url,{headers})
     .pipe(
       map((data)=>{
         data.main = data.main;
-        data.description = data.description;
-        data.icon = data.icon;
+        data.weather = data.weather;
         data.name = data.name;
         return data;
       }));

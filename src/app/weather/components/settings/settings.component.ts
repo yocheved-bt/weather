@@ -21,19 +21,19 @@ export class SettingsComponent implements OnInit, OnDestroy {
   constructor(private router: Router, dataService: DataService) {
     this.dataService = dataService;
   }
+  
   valueChange(val): void {
     this.isChange = true;
     this.tempData[val.name] = val.event;
   }
-
+  
   update() {
     if (this.isChange) { // data changed
       this.dataService.settData = this.tempData;
       this.subscription = this.dataService.getDetails().subscribe(
         (data: Weather) => {
-          console.log('@@@@@@@@@@@@@@@@@ data @@@@@', data);
+          this.dataService.data = data;
           this.navigate();
-
         }
       );
     }
@@ -48,11 +48,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isChange = false;
-    this.tempData = this.dataService.settData;
+    this.tempData = JSON.parse(JSON.stringify(this.dataService.settData));
   }
 
   ngOnDestroy() {
-    if(this.isChange){
+    if(this.subscription !== undefined){
     this.subscription.unsubscribe();
   }
 }
