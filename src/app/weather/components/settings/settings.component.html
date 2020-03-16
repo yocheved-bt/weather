@@ -1,16 +1,19 @@
-<qk-dropdown [title] ="'Citis'"
-             [list] ="dataService.cityList"
-             [type] = "'city'"
-             [defualtValue] ="tempData.city"
-             (change)="valueChange($event)">
-</qk-dropdown>
-
-<qk-dropdown [title] ="'Temperature units'"
-             [list] ="dataService.tempUnitsList"
-             [type] = "'tempUnit'"
-             [defualtValue] ="tempData.tempUnit"
-             (change)="valueChange($event)">
-</qk-dropdown>
-
-<button (click)= "update()">update</button>
-
+<div class="conainer">
+    <form class="form card">
+        <h4 class="title"> Set your Settings</h4> 
+        <div class="form-group">
+            <label for="city">Citis</label>
+            <qk-dropdown [title]="'Citis'" [list]="dataService.cityList" [type]="'city'" [defualtValue]="tempData.city"
+                (change)="valueChange($event)">
+            </qk-dropdown>
+        </div>
+        <div class="form-group">
+            <label for="unitTemp">Temperature units</label>
+            <qk-dropdown [title]="'Temperature units'" [list]="dataService.tempUnitsList" [type]="'tempUnit'"
+                [defualtValue]="tempData.tempUnit" (change)="valueChange($event)">
+            </qk-dropdown>
+        </div>
+        
+        <button class="btn btn-primary" (click)="update()">Update</button>
+    </form>
+</div>

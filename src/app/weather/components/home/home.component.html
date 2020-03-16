@@ -1,10 +1,19 @@
-<h2>{{data.name}}</h2>
 
-<img [src]="src" alt="dat" />
-<div>
-    <span>{{data.main.temp}}</span>
-</div>
-<div>
-    <b>{{detail.main}}</b>
-    <p>{{detail.description}}</p>
-</div>
+
+<div class="container">
+    <div class="row">
+
+      <div class="col-sm">
+        <h2 class="title">{{data.name}} </h2>
+        <h4 class="temp">{{data.main.temp}}</h4>
+        <p class="temp">{{unitTemp}}</p>
+      </div>
+
+      <div class="col-sm">
+        <h4 class="title-temp">{{detail.main}} </h4> 
+        <img class="icon" [src]="src" alt="{{detail.main}}" title="{{detail.main}}" />
+        <p>  {{detail.description}} </p>
+      </div>
+     
+    </div>
+  </div>

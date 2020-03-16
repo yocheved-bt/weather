@@ -43,7 +43,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   }
   navigate(){
-    this.router.navigate(['./home/']);
+    
+    this.router.navigate(['/home']);
+
   }
 
   ngOnInit(): void {

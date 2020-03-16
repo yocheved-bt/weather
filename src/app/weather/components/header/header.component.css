@@ -1,0 +1,15 @@
+.logo{
+    width: 20%;
+}
+.nav-item{
+    cursor: pointer;
+    outline:none;
+
+}
+.active{
+    font-weight: bold;
+}
+
+.title{
+    color: white;
+}

@@ -4,7 +4,10 @@ import { DDList } from '../../types'
 
 @Component({
   selector: 'qk-dropdown',
-  templateUrl: './dropdown.component.html',
+  template: `<select class="form-control selcls"  (ngModelChange)="onChange($event)" [(ngModel)]="defualtValue">
+             <option disabled selected>Select a {{title}}</option>
+             <option *ngFor="let item of list" [ngValue]="item">  {{item.name}} </option>
+             </select>`,
   styleUrls: ['./dropdown.component.css']
 })
 export class DropdownComponent implements OnInit {

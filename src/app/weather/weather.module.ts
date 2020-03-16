@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { CoreModule } from '../core/core.module'
 import { WeatherRoutingModule } from './weather-routing.module'
