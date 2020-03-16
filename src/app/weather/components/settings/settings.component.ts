@@ -16,7 +16,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   dataService;
   subscription: Subscription;
   isChange: boolean;
-  tempData: Settings
+  tempData: Settings;
+  isLoading: boolean;
 
   constructor(private router: Router, dataService: DataService) {
     this.dataService = dataService;
@@ -28,6 +29,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
   
   update() {
+    this.isLoading = true;
     if (this.isChange) { // data changed
       this.dataService.settData = this.tempData;
       this.subscription = this.dataService.getDetails().subscribe(
@@ -42,6 +44,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   navigate(){
+    this.isLoading = false;
     this.router.navigate(['/home']);
   }
 
